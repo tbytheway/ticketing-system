@@ -1,0 +1,19 @@
+@import "./nav.scss";
+
+body {
+    top: 0;
+    left: 0;
+    background-color: blue($color: #000000);
+    z-index: 1;
+}
+
+.side-menu {
+    display: flex;
+    justify-content: left;
+}
+
+.app-header {
+    display: flex;
+    height: 100px;
+    background-color: rgb(212, 22, 22);
+}

@@ -1,0 +1,28 @@
+.nav-bar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    // top: 0;
+    left: 0;
+    background-color: rgb(212, 22, 22);
+    padding-top: 20px
+}
+.nav-bar-links {
+    display: flex;
+    flex-direction: column;
+}
+.nav-bar-links a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    
+}
+
+.nav-bar-links a:hover {
+    color: #f1f1f1;
+    background: rgb(128, 25, 25);
+    
+  }
