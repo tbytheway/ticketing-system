@@ -1,0 +1,34 @@
+.create-ticket {
+    display: grid;
+    list-style: none;
+    
+    }
+
+ .create-ticket input {
+    font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 7px;
+	background: #F7F7F7;
+        }
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 20 0;
+    
+}
+
+.title input {
+    font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 7px;
+	background: #F7F7F7;
+}
+.type {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    
+}

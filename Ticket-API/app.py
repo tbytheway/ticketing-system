@@ -6,7 +6,9 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
