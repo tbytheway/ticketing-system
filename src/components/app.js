@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import Dashboard from './dashboard';
 import Create from './create';
 import Navigation from './navigation';
+import RenderTickets from './render-tickets'
 import "../style/main.scss";
 
 

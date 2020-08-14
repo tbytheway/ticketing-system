@@ -2,16 +2,29 @@ import React, { Component } from 'react'
 import Create from './create'
 import axios from 'axios'
 import RenderTickets from './render-tickets'
+import TicketsSummary from './tickets-summary'
+
+
+import '../style/main.scss'
 
 
 export default class Dashboard extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            tickets: []
-          }
-          
+          tickets: [],
+        } 
+        this.handleTicketClick =this.handleTicketClick.bind(this)
     }
+
+
+
+handleTicketClick() {
+  this.setState({
+    ticketModalIsOpen: true
+  })
+}
+
 
 renderTickets() {
         
@@ -32,8 +45,27 @@ renderTickets() {
         })
       }
     
+      ticketSummary() {
+        
+        return this.state.tickets.map(ticket => {
+          return (
+            <div key={ticket.id}>
+             <TicketsSummary 
+                title={ticket.title}
+                description={ticket.description}
+                ticket_type={ticket.ticket_type}
+                resolved={ticket.resolved}
+                notes={ticket.notes}
+                priority={ticket.priority}
+                owner={ticket.owner}
+              />
+            </div>
+          )
+        })
+      }
+
       componentDidMount() {
-        axios.get("http://localhost:5000/tickets")
+        axios.get("https://tdb-ticket-api.herokuapp.com/tickets")
         .then(res => {
             this.setState({
             tickets: res.data
@@ -50,10 +82,17 @@ render() {
         <div>
             
             <div className="header"></div>
+            <h1>Active Tickets</h1>
             <div className="bodyWrapper">
-                <h1>Dashboard</h1>
-                {this.renderTickets()}
-        {/* <Create /> */}
+                <div className="columns">
+                  
+                  <div>Title</div>
+                  <div>Description</div>
+                  <div>Ticket Type</div>
+                  <div>Priority</div>
+                </div>
+                {this.ticketSummary()}
+        
 
             </div>
         </div>

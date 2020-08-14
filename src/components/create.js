@@ -7,6 +7,7 @@ export default class Create extends Component {
     constructor() {
         super()
             this.state = {
+                id: "",
                 title: "",
                 description: "",
                 ticket_type: "",
@@ -16,6 +17,12 @@ export default class Create extends Component {
                 owner: ""
         }
     }
+
+    
+    handleEditClick() {
+        console.log("handle edit clicked");
+        this.setState({ editMode: true });
+      }
 
     createTitle(event) {
         this.setState({
@@ -67,7 +74,8 @@ export default class Create extends Component {
         this.setState({
             good: true
         })
-        axios.post("http://localhost:5000/ticket", {
+        axios.post("https://tdb-ticket-api.herokuapp.com/ticket", {
+            id: this.state.id,
             title: this.state.title,
             description: this.state.description,
             ticket_type: this.ticket_type,
@@ -78,14 +86,32 @@ export default class Create extends Component {
         }) .then(function (response) {
             console.log(response)
         })
+            .catch(function (error) {
+                console.log(error)
+            })
     }
+
+
+    componentWillMount() {
+        if (this.props.editMode) {
+          this.setState({
+            id: this.state.blog.id,
+            title: this.state.blog.title,
+            description: this.state.description,
+            ticket_type: this.ticket_type,
+            resolved: this.state.resolved,
+            notes: this.state.notes,
+            priority: this.state.priority,
+            owner: this.state.owner
+          });
+        }
+      }
 
 
 render() {
     return(
         <div>
-        <h1>Create</h1>
-        <form className="create-ticket">
+                <form className="create-ticket" editMode={this.state.editMode}>
                 <li>Title</li>
                 <div className='title'><input type="text" onChange={event => this.createTitle(event)}/>
 
