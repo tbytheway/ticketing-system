@@ -1,12 +1,11 @@
-.create-ticket {
+.update-ticket {
     display: grid;
     grid-template-columns: auto auto;
-    column-gap: 20px;
     border: 1px;
     font-weight: bold;
 }
 
- .create-ticket input {
+ .update-ticket input {
     font: 95% Arial, Helvetica, sans-serif;
 	margin: 10px auto;
 	padding: 7px;
@@ -15,21 +14,11 @@
     
 }
 
-// .create-notes input {
+// .update-notes input {
 //     width: 400px;
 //     height: 50px;
 // }
 
 .form-input input {
     width: 400px;
-}
-
-@media all and (max-width: 700px) {
-    .create-ticket {
-        display: grid;
-        grid-template-columns: auto;
-        column-gap: 20px;
-        border: 1px;
-        font-weight: bold;
-    }
 }

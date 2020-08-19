@@ -1,12 +1,22 @@
 import React, {Component} from 'react'
 import ReactModal from 'react-modal'
-import Create from './create'
+import Update from './update'
 ReactModal.setAppElement(".app-wrapper")
 
 
 export default class TicketModal extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            id: this.props.id,
+            title: this.props.title,
+            description: this.props.description,
+            ticket_type: this.props.ticket_type,
+            resolved: this.props.resolved,
+            notes: this.props.notes,
+            priority: this.props.priority,
+            owner: this.props.owner
+        }
 
         this.customStyles = {
             content: {
@@ -35,7 +45,16 @@ render() {
         handleModalClose={this.handleModalClose}
         isOpen={this.props.modalIsOpen}>
             
-            <Create />
+            <Update
+                id={this.state.id}
+                title={this.state.title}
+                description={this.state.description}
+                ticket_type={this.state.ticket_type}
+                resolved={this.state.resolved}
+                notes={this.state.notes}
+                priority={this.state.priority}
+                owner={this.state.owner}
+            />
             
         </ReactModal>
     )

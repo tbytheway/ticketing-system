@@ -7,7 +7,16 @@ export default class TicketsSummary extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            ticketModalIsOpen: false
+            ticketModalIsOpen: false,
+            id: this.props.id,
+            title: this.props.title,
+            description: this.props.description,
+            ticket_type: this.props.ticket_type,
+            resolved: this.props.resolved,
+            notes: this.props.notes,
+            priority: this.props.priority,
+            owner: this.props.owner,
+            showResolved: this.props.showResolved
           }
     this.handleTicketClick = this.handleTicketClick.bind(this) 
     this.handleModalClose = this.handleModalClose.bind(this)
@@ -30,14 +39,25 @@ export default class TicketsSummary extends Component {
 
             <div className="ticket-summary">
                 <TicketModal
+                    id={this.state.id}
+                    title={this.state.title}
+                    description={this.state.description}
+                    ticket_type={this.state.ticket_type}
+                    resolved={this.state.resolved}
+                    notes={this.state.notes}
+                    priority={this.state.priority}
+                    owner={this.state.owner}
                     handleModalClose={this.handleModalClose}
                     modalIsOpen={this.state.ticketModalIsOpen}
                  />
+                 {this.state.resolved === "False" ? 
+              <div className="ticket-summary-data">
                 <div className="grid-item"><a onClick={this.handleTicketClick}>{this.props.title}</a></div>
                 <div className="grid-item">{this.props.description}</div>
                 <div className="grid-item">{this.props.ticket_type}</div>
                 <div className="grid-item">{this.props.priority}</div>
-            </div>
+              </div> : null }
+              </div>
             
         )
     }

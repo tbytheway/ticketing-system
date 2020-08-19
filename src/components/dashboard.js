@@ -13,8 +13,10 @@ export default class Dashboard extends Component {
         super(props)
         this.state = {
           tickets: [],
+          showResolved: false
         } 
         this.handleTicketClick =this.handleTicketClick.bind(this)
+        this.handleShowResolved = this.handleShowResolved.bind(this)
     }
 
 
@@ -22,6 +24,12 @@ export default class Dashboard extends Component {
 handleTicketClick() {
   this.setState({
     ticketModalIsOpen: true
+  })
+}
+
+handleShowResolved() {
+  this.setState({
+    showResolved: true
   })
 }
 
@@ -51,6 +59,7 @@ renderTickets() {
           return (
             <div key={ticket.id}>
              <TicketsSummary 
+                id={ticket.id}
                 title={ticket.title}
                 description={ticket.description}
                 ticket_type={ticket.ticket_type}
@@ -93,7 +102,7 @@ render() {
                 </div>
                 {this.ticketSummary()}
         
-
+              <button onClick={this.handleShowResolved}>Show Resolved</button>
             </div>
         </div>
         

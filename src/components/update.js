@@ -4,7 +4,7 @@ import { navigate } from 'hookrouter'
 import '../style/main.scss'
 
 
-export default class Create extends Component {
+export default class Update extends Component {
     constructor(props) {
         super(props)
             this.state = {
@@ -12,7 +12,7 @@ export default class Create extends Component {
                 title: "",
                 description: "",
                 ticket_type: "",
-                resolved: "",
+                resolved: "False",
                 notes: "",
                 priority: "",
                 owner: ""
@@ -20,6 +20,12 @@ export default class Create extends Component {
     }
 
     
+    createId(event) {
+        this.setState({
+            id: event.target.value
+        })
+    }
+
     createTitle(event) {
         this.setState({
             title: event.target.value
@@ -66,9 +72,9 @@ export default class Create extends Component {
         
     }
 
-    submitChange = (e) => {
-        e.preventDefault()
-        axios.post("https://tdb-ticket-api.herokuapp.com/ticket", {
+    submitChange = () => {
+        
+        axios.put(`https://tdb-ticket-api.herokuapp.com/ticket/${this.state.id}`, {
             id: this.state.id,
             title: this.state.title,
             description: this.state.description,
@@ -80,7 +86,7 @@ export default class Create extends Component {
         }) .then(function (response) {
             console.log(response)
         })
-        // .then(navigate("/thanks"))
+        .then(navigate("/"))
         .catch(err => console.error("Handle Subit Error: ", err))
             .catch(function (error) {
                 console.log(error)
@@ -88,14 +94,25 @@ export default class Create extends Component {
     }
 
 
-   
+    componentWillMount() {
+        this.setState({
+            id: this.props.id,
+            title: this.props.title,
+            description: this.props.description,
+            ticket_type: this.props.ticket_type,
+            resolved: this.props.resolved,
+            notes: this.props.notes,
+            priority: this.props.priority,
+            owner: this.props.owner
+          });
+        
+      }
 
 
 render() {
     return(
         <div>
-                <form className="create-ticket" id={this.state.id}>
-                    <h1>Create a ticket</h1><div></div>
+                <form className="update-ticket" id={this.state.id}>
                 <div>Title</div>
                 <div>Priority</div>
                 <div className="form-input"><input type="text" value={this.state.title} onChange={event => this.createTitle(event)}/></div>
@@ -108,18 +125,18 @@ render() {
                 </div>
                 <div>Description</div>
                 <div>Ticket Type</div>
-                <div className="form-input"><input type="text" value={this.state.description} onChange={event => this.createDescription(event)}/></div>
-                <div><input type="text" value={this.state.ticket_type} onChange={event => this.createTicketType(event)}/></div>
+                <div className="form-input"><input type="text" placeholder="Description" value={this.state.description} onChange={event => this.createDescription(event)}/></div>
+                <div><input type="text" placeholder="ticket type" value={this.state.ticket_type} onChange={event => this.createTicketType(event)}/></div>
                 <div>Notes</div><div>Resolved</div> 
-                <div className="create-notes"><textarea cols="50" rows="5" value={this.state.notes} onChange={event => this.createNotes(event)}/></div>
+                <div className="update-notes"><textarea cols="55" rows="5" value={this.state.notes} onChange={event => this.createNotes(event)}/></div>
                 <div className="resolved-owner">
                     <div><select name="resolvedDropdown" value={this.state.resolved} onChange={event => this.createResolved(event)}>
-                        <option value="False">No</option>
                         <option value="True">Yes</option>
+                        <option value="False">No</option>
                         </select>
                     </div>
                     Owner
-                    <div><input type="text" value={this.state.owner} onChange={event => this.createOwner(event)}/></div>
+                    <div><input type="text" placeholder="Owner" value={this.state.owner} onChange={event => this.createOwner(event)}/></div>
                 </div>
                    
                 <button onClick={this.submitChange} >Submit</button>
