@@ -14,22 +14,56 @@
     border: 1px;
     
 }
-
-// .create-notes input {
-//     width: 400px;
-//     height: 50px;
-// }
+.create-notes {
+    font: 95% Arial, Helvetica, sans-serif;
+	margin: 10px auto;
+	padding: 7px;
+    
+}
 
 .form-input input {
     width: 400px;
 }
 
+.create-submit {
+    background-color: rgb(212, 22, 22);
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 200px;
+    cursor: pointer;
+}
+
 @media all and (max-width: 700px) {
     .create-ticket {
-        display: grid;
-        grid-template-columns: auto;
-        column-gap: 20px;
+        display: flex;
+        flex-direction: column;
         border: 1px;
         font-weight: bold;
     }
+
+    .form-input input {
+        width: 350px; 
+    }
+    
+    
+      .create-ticket :nth-of-type(1) { order: 1; }
+      .create-ticket :nth-of-type(2) { order: 3; }
+      .create-ticket :nth-of-type(3) { order: 2; }
+      .create-ticket :nth-of-type(4) { order: 4; }
+      .create-ticket :nth-of-type(5) { order: 5; }
+      .create-ticket :nth-of-type(6) { order: 7; }
+      .create-ticket :nth-of-type(7) { order: 6; }
+      .create-ticket :nth-of-type(8) { order: 8; }
+      .create-ticket :nth-of-type(9) { order: 9; }
+      .create-ticket :nth-of-type(10) { order: 11; }
+      .create-ticket :nth-of-type(11) { order: 10; }
+      .create-ticket :nth-of-type(12) { order: 12; }
+      .create-ticket :nth-of-type(13) { order: 13; }
+      .create-ticket :nth-of-type(14) { order: 14; }
 }

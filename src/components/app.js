@@ -42,7 +42,7 @@ export default class App extends Component {
         <Navigation />
         </div>
         <div style={{display: 'flex', justifyContent: 'center'}}>
-          <h2>{this.state.loggedInStatus}</h2>
+          {/* <h2>{this.state.loggedInStatus}</h2> */}
         <Switch>
             <Route
                path="/auth"

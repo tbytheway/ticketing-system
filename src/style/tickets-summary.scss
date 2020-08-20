@@ -10,5 +10,12 @@
 }
 
 .ticket-summary-data {
-    display: flex
+    display: flex;
+    cursor: pointer;
+    
 }
+
+.rows :nth-of-type(odd) {
+    background: lightsteelblue;
+  }
+

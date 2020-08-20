@@ -93,8 +93,22 @@ export default class Update extends Component {
             })
     }
 
+    submitDelete = (e) => {
+        
+        confirm("Are you sure?")
+        axios.delete(`https://tdb-ticket-api.herokuapp.com//delete/ticket/${this.state.id}`, {
+            id: this.state.id,
+        }) .then(function (response) {
+            console.log(response)
+        })
+        // .then(navigate("/"))
+        .catch(err => console.error("Handle Subit Error: ", err))
+            .catch(function (error) {
+                console.log(error)
+            })
+    }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
             id: this.props.id,
             title: this.props.title,
@@ -139,7 +153,8 @@ render() {
                     <div><input type="text" placeholder="Owner" value={this.state.owner} onChange={event => this.createOwner(event)}/></div>
                 </div>
                    
-                <button onClick={this.submitChange} >Submit</button>
+                <button className="submit" onClick={this.submitChange} >Submit</button>
+                <button className="delete" onClick={this.submitDelete} >Delete</button>
             </form>
            
             

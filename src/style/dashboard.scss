@@ -10,3 +10,17 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.show-archived {
+    background-color: rgb(212, 22, 22);
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 200px;
+    cursor: pointer;
+}

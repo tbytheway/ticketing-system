@@ -32,6 +32,9 @@ export default class Create extends Component {
         })
     }
 
+    // DRY programming (Do not repeat yourself)
+    // [event.target.name]: event.target.value
+
     createTicketType(event) {
         this.setState({
             ticket_type: event.target.value
@@ -67,7 +70,7 @@ export default class Create extends Component {
     }
 
     submitChange = (e) => {
-        e.preventDefault()
+        
         axios.post("https://tdb-ticket-api.herokuapp.com/ticket", {
             id: this.state.id,
             title: this.state.title,
@@ -80,7 +83,7 @@ export default class Create extends Component {
         }) .then(function (response) {
             console.log(response)
         })
-        // .then(navigate("/thanks"))
+        .then(navigate("/thanks"))
         .catch(err => console.error("Handle Subit Error: ", err))
             .catch(function (error) {
                 console.log(error)
@@ -94,13 +97,14 @@ export default class Create extends Component {
 render() {
     return(
         <div>
-                <form className="create-ticket" id={this.state.id}>
-                    <h1>Create a ticket</h1><div></div>
+            <h1>Create a ticket</h1><p></p>
+            <form className="create-ticket" id={this.state.id}>
                 <div>Title</div>
                 <div>Priority</div>
-                <div className="form-input"><input type="text" value={this.state.title} onChange={event => this.createTitle(event)}/></div>
+                <div className="form-input"><input type="text" placeholder="title" value={this.state.title} onChange={event => this.createTitle(event)}/></div>
                 <div>
                     <select name="priorityDropdown" value={this.state.priority} onChange={event => this.createPriority(event)}>
+                    <option value=""></option>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -108,23 +112,24 @@ render() {
                 </div>
                 <div>Description</div>
                 <div>Ticket Type</div>
-                <div className="form-input"><input type="text" value={this.state.description} onChange={event => this.createDescription(event)}/></div>
-                <div><input type="text" value={this.state.ticket_type} onChange={event => this.createTicketType(event)}/></div>
+                <div className="form-input"><input type="text" placeholder="Description" value={this.state.description} onChange={event => this.createDescription(event)}/></div>
+                <div><input type="text" placeholder="ticket type" value={this.state.ticket_type} onChange={event => this.createTicketType(event)}/></div>
                 <div>Notes</div><div>Resolved</div> 
                 <div className="create-notes"><textarea cols="50" rows="5" value={this.state.notes} onChange={event => this.createNotes(event)}/></div>
                 <div className="resolved-owner">
                     <div><select name="resolvedDropdown" value={this.state.resolved} onChange={event => this.createResolved(event)}>
+                        <option value=""></option>
                         <option value="False">No</option>
                         <option value="True">Yes</option>
                         </select>
                     </div>
                     Owner
-                    <div><input type="text" value={this.state.owner} onChange={event => this.createOwner(event)}/></div>
+                    <div><input type="text" placeholder="owner" name="owner" value={this.state.owner} onChange={event => this.createOwner(event)}/></div>
                 </div>
                    
-                <button onClick={this.submitChange} >Submit</button>
+                
             </form>
-           
+           <button className="create-submit" onClick={this.submitChange} >Submit</button>
             
         </div>
     )

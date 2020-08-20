@@ -7,7 +7,6 @@ import TicketsSummary from './tickets-summary'
 
 import '../style/main.scss'
 
-
 export default class Dashboard extends Component {
     constructor(props) {
         super(props)
@@ -34,24 +33,24 @@ handleShowResolved() {
 }
 
 
-renderTickets() {
+// renderTickets() {
         
-        return this.state.tickets.map(ticket => {
-          return (
-            <div key={ticket.id}>
-             <RenderTickets 
-                title={ticket.title}
-                description={ticket.description}
-                ticket_type={ticket.ticket_type}
-                resolved={ticket.resolved}
-                notes={ticket.notes}
-                priority={ticket.priority}
-                owner={ticket.owner}
-              />
-            </div>
-          )
-        })
-      }
+//         return this.state.tickets.map(ticket => {
+//           return (
+//             <div key={ticket.id}>
+//              <RenderTickets 
+//                 title={ticket.title}
+//                 description={ticket.description}
+//                 ticket_type={ticket.ticket_type}
+//                 resolved={ticket.resolved}
+//                 notes={ticket.notes}
+//                 priority={ticket.priority}
+//                 owner={ticket.owner}
+//               />
+//             </div>
+//           )
+//         })
+//       }
     
       ticketSummary() {
         
@@ -67,7 +66,9 @@ renderTickets() {
                 notes={ticket.notes}
                 priority={ticket.priority}
                 owner={ticket.owner}
+                showResolved={this.state.showResolved}
               />
+              
             </div>
           )
         })
@@ -76,7 +77,7 @@ renderTickets() {
       componentDidMount() {
         axios.get("https://tdb-ticket-api.herokuapp.com/tickets")
         .then(res => {
-            this.setState({
+          this.setState({
             tickets: res.data
           })
         })
@@ -101,8 +102,8 @@ render() {
                   <div>Priority</div>
                 </div>
                 {this.ticketSummary()}
-        
-              <button onClick={this.handleShowResolved}>Show Resolved</button>
+                <p>{this.state.showResolved}</p>
+                <button className="show-archived" onClick={this.handleShowResolved}>Show Archived</button>
             </div>
         </div>
         

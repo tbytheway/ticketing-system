@@ -50,13 +50,24 @@ export default class TicketsSummary extends Component {
                     handleModalClose={this.handleModalClose}
                     modalIsOpen={this.state.ticketModalIsOpen}
                  />
+                 
+                 {this.state.showResolved === false ? 
+              <div onChange={this.state.showResolved}>
                  {this.state.resolved === "False" ? 
-              <div className="ticket-summary-data">
-                <div className="grid-item"><a onClick={this.handleTicketClick}>{this.props.title}</a></div>
+              <div className="ticket-summary-data" onClick={this.handleTicketClick}>
+                <div className="grid-item"><a >{this.props.title}</a></div>
                 <div className="grid-item">{this.props.description}</div>
                 <div className="grid-item">{this.props.ticket_type}</div>
                 <div className="grid-item">{this.props.priority}</div>
               </div> : null }
+              </div>
+            : <div className="ticket-summary-data" onClick={this.handleTicketClick}>
+                <div className="grid-item"><a >{this.props.title}</a></div>
+                <div className="grid-item">{this.props.description}</div>
+                <div className="grid-item">{this.props.ticket_type}</div>
+                <div className="grid-item">{this.props.priority}</div>
+            </div>  }
+            
               </div>
             
         )

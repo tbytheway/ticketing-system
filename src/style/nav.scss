@@ -30,7 +30,7 @@
   @media all and (max-width: 700px) {
     .nav-bar {
         height: 100%;
-        width: 50px;
+        width: 0px;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -39,4 +39,8 @@
         padding-top: 20px
     }
 
+    .nav-bar-links {
+        display: none;
+        
+    }
   }
