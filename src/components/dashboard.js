@@ -9,7 +9,8 @@ export default class Dashboard extends Component {
         super(props)
         this.state = {
           tickets: [],
-          showResolved: false
+          showResolved: false,
+          showHide: "Show Archived"
         } 
         this.handleTicketClick =this.handleTicketClick.bind(this)
         this.handleShowResolved = this.handleShowResolved.bind(this)
@@ -25,7 +26,8 @@ handleTicketClick() {
 
 handleShowResolved() {
   this.setState({
-    showResolved: !this.state.showResolved
+    showResolved: !this.state.showResolved,
+    showHide: !this.state.showHide
   })
 }
 
@@ -100,7 +102,7 @@ render() {
                   <div>Priority</div>
                 </div>
                 {this.ticketSummary()}
-                <button className="show-archived" onClick={this.handleShowResolved}>Show Archived</button>
+                <button className="show-archived" onClick={this.handleShowResolved}>{this.state.showHide ? "Show Archived" : "Hide Archived"}</button>
             </div>
         </div>
         
