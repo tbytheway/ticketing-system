@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import Create from './create'
 import axios from 'axios'
-import RenderTickets from './render-tickets'
 import TicketsSummary from './tickets-summary'
-
 
 import '../style/main.scss'
 
@@ -33,25 +30,6 @@ handleShowResolved() {
 }
 
 
-// renderTickets() {
-        
-//         return this.state.tickets.map(ticket => {
-//           return (
-//             <div key={ticket.id}>
-//              <RenderTickets 
-//                 title={ticket.title}
-//                 description={ticket.description}
-//                 ticket_type={ticket.ticket_type}
-//                 resolved={ticket.resolved}
-//                 notes={ticket.notes}
-//                 priority={ticket.priority}
-//                 owner={ticket.owner}
-//               />
-//             </div>
-//           )
-//         })
-//       }
-    
       ticketSummary() {
         
         return this.state.tickets.map(ticket => {
@@ -68,7 +46,6 @@ handleShowResolved() {
                 owner={ticket.owner}
                 showResolved={this.state.showResolved}
               />
-              
             </div>
           )
         })
@@ -90,19 +67,16 @@ handleShowResolved() {
 render() {
     return(
         <div>
-            
-            <div className="header"></div>
+          <div className="header"></div>
             <h1>Active Tickets</h1>
             <div className="bodyWrapper">
                 <div className="columns">
-                  
                   <div>Title</div>
                   <div>Description</div>
                   <div>Ticket Type</div>
                   <div>Priority</div>
                 </div>
                 {this.ticketSummary()}
-                <p>{this.state.showResolved}</p>
                 <button className="show-archived" onClick={this.handleShowResolved}>Show Archived</button>
             </div>
         </div>

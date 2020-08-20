@@ -32,6 +32,17 @@ export default class TicketsSummary extends Component {
             ticketModalIsOpen: false
         })
       }
+      handleResolvedUpdate() {
+        this.setState({
+          showResolved: true
+      })
+    }
+    // componentDidMount() {
+    //   if (this.props.showResolved === true)
+    //   this.setState({
+    //     showResolved: true
+    //   })
+    // }
 
 
     render(props) {
@@ -52,7 +63,7 @@ export default class TicketsSummary extends Component {
                  />
                  
                  {this.state.showResolved === false ? 
-              <div onChange={this.state.showResolved}>
+              <div onChange={this.handleResolvedUpdate}>
                  {this.state.resolved === "False" ? 
               <div className="ticket-summary-data" onClick={this.handleTicketClick}>
                 <div className="grid-item"><a >{this.props.title}</a></div>
@@ -68,7 +79,7 @@ export default class TicketsSummary extends Component {
                 <div className="grid-item">{this.props.priority}</div>
             </div>  }
             
-              </div>
+          </div>
             
         )
     }

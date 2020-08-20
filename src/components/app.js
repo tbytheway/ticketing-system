@@ -34,16 +34,12 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        
-        
-        
-      
-      <div className="side-menu">
-        <Navigation />
+        <div className="side-menu">
+          <Navigation />
         </div>
         <div style={{display: 'flex', justifyContent: 'center'}}>
           {/* <h2>{this.state.loggedInStatus}</h2> */}
-        <Switch>
+          <Switch>
             <Route
                path="/auth"
                render={props => (
@@ -56,7 +52,7 @@ export default class App extends Component {
             <Route exact path="/" component={Dashboard}/>
             <Route path="/create" component={Create}/>
             <Route path="/thanks" component={Thanks}/>
-        </Switch>
+          </Switch>
         </div>
       </div>
     );
