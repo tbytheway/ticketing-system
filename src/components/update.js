@@ -19,60 +19,16 @@ export default class Update extends Component {
         }
     }
 
-    
-    createId(event) {
+
+    handleChange = e => {
         this.setState({
-            id: event.target.value
+            [e.target.name]: e.target.value
         })
     }
 
-    createTitle(event) {
-        this.setState({
-            title: event.target.value
-        })
-    }
 
-    createDescription(event) {
-        this.setState({
-            description: event.target.value
-        })
-    }
-
-    createTicketType(event) {
-        this.setState({
-            ticket_type: event.target.value
-        })
-    }
-
-    createResolved(event) {
-        this.setState({
-            resolved: event.target.value
-        })
-        
-    }
-
-    createNotes(event) {
-        this.setState({
-            notes: event.target.value
-        })
-        
-    }
-
-    createPriority(event) {
-        this.setState({
-            priority: event.target.value
-        })
-        
-    }
-
-    createOwner(event) {
-        this.setState({
-            owner: event.target.value
-        })
-        
-    }
-
-    submitChange = () => {
+    submitChange = (e) => {
+        e.preventDefault()
         
         axios.put(`https://tdb-ticket-api.herokuapp.com/ticket/${this.state.id}`, {
             id: this.state.id,
@@ -83,10 +39,10 @@ export default class Update extends Component {
             ticket_type: this.state.ticket_type,
             priority: this.state.priority,
             owner: this.state.owner
-        }) .then(function (response) {
+        }) .then( (response) => {
             console.log(response)
+            this.props.handleSuccesfulFormSubmit(response.data)
         })
-        .then(navigate("/"))
         .catch(err => console.error("Handle Subit Error: ", err))
             .catch(function (error) {
                 console.log(error)
@@ -94,7 +50,6 @@ export default class Update extends Component {
     }
 
     submitDelete = (e) => {
-        
         confirm("Are you sure?")
         axios.delete(`https://tdb-ticket-api.herokuapp.com//delete/ticket/${this.state.id}`, {
             id: this.state.id,
@@ -129,9 +84,9 @@ render() {
                 <form className="update-ticket" id={this.state.id}>
                 <div>Title</div>
                 <div>Priority</div>
-                <div className="form-input"><input type="text" value={this.state.title} onChange={event => this.createTitle(event)}/></div>
+                <div className="form-input"><input name="title" type="text" value={this.state.title} onChange={this.handleChange}/></div>
                 <div>
-                    <select name="priorityDropdown" value={this.state.priority} onChange={event => this.createPriority(event)}>
+                    <select name="priorityDropdown" value={this.state.priority} name="priority" onChange={this.handleChange}>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -139,18 +94,18 @@ render() {
                 </div>
                 <div>Description</div>
                 <div>Ticket Type</div>
-                <div className="form-input"><input type="text" placeholder="Description" value={this.state.description} onChange={event => this.createDescription(event)}/></div>
-                <div><input type="text" placeholder="ticket type" value={this.state.ticket_type} onChange={event => this.createTicketType(event)}/></div>
+                <div className="form-input"><input type="text" placeholder="Description" value={this.state.description} name="description" onChange={this.handleChange}/></div>
+                <div><input type="text" placeholder="ticket type" value={this.state.ticket_type} name="ticket_type" onChange={this.handleChange}/></div>
                 <div>Notes</div><div>Resolved</div> 
-                <div className="update-notes"><textarea cols="55" rows="5" value={this.state.notes} onChange={event => this.createNotes(event)}/></div>
+                <div className="update-notes"><textarea cols="55" rows="5" value={this.state.notes} name="notes" onChange={this.handleChange}/></div>
                 <div className="resolved-owner">
-                    <div><select name="resolvedDropdown" value={this.state.resolved} onChange={event => this.createResolved(event)}>
+                    <div><select name="resolvedDropdown" value={this.state.resolved} name="resolved" onChange={this.handleChange}>
                         <option value="True">Yes</option>
                         <option value="False">No</option>
                         </select>
                     </div>
                     Owner
-                    <div><input type="text" placeholder="Owner" value={this.state.owner} onChange={event => this.createOwner(event)}/></div>
+                    <div><input type="text" placeholder="Owner" value={this.state.owner} name="owner" onChange={this.handleChange}/></div>
                 </div>
                    
                 <button className="submit" onClick={this.submitChange} >Submit</button>

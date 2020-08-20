@@ -25,15 +25,18 @@ handleTicketClick() {
 
 handleShowResolved() {
   this.setState({
-    showResolved: true
+    showResolved: !this.state.showResolved
   })
 }
 
+handleSuccesfulFormSubmit = updatedObj => {
+  this.getTickets()
+}
 
       ticketSummary() {
-        
         return this.state.tickets.map(ticket => {
           return (
+          this.state.showResolved ?
             <div key={ticket.id}>
              <TicketsSummary 
                 id={ticket.id}
@@ -45,22 +48,42 @@ handleShowResolved() {
                 priority={ticket.priority}
                 owner={ticket.owner}
                 showResolved={this.state.showResolved}
-              />
+                handleSuccesfulFormSubmit={this.handleSuccesfulFormSubmit}
+              /> 
             </div>
+            : ticket.resolved === "False" ? 
+            <div key={ticket.id}>
+             <TicketsSummary 
+                id={ticket.id}
+                title={ticket.title}
+                description={ticket.description}
+                ticket_type={ticket.ticket_type}
+                resolved={ticket.resolved}
+                notes={ticket.notes}
+                priority={ticket.priority}
+                owner={ticket.owner}
+                showResolved={this.state.showResolved}
+                handleSuccesfulFormSubmit={this.handleSuccesfulFormSubmit}
+              /> 
+            </div> : null
           )
         })
       }
 
-      componentDidMount() {
+      getTickets = () => {
         axios.get("https://tdb-ticket-api.herokuapp.com/tickets")
-        .then(res => {
-          this.setState({
-            tickets: res.data
-          })
+      .then(res => {
+        this.setState({
+          tickets: res.data
         })
-        .catch(function (error) {
-            console.log(error);
-          });
+      })
+      .catch(function (error) {
+          console.log(error);
+        });
+      }
+
+      componentDidMount() {
+        this.getTickets()
       };
 
 

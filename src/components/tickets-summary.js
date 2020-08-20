@@ -37,6 +37,13 @@ export default class TicketsSummary extends Component {
           showResolved: true
       })
     }
+
+    handleSuccesfulFormSubmit = (updatedTicket) => {
+      this.setState({
+        ticketModalIsOpen: false,
+      })
+      this.props.handleSuccesfulFormSubmit(updatedTicket)
+    }
     // componentDidMount() {
     //   if (this.props.showResolved === true)
     //   this.setState({
@@ -45,7 +52,7 @@ export default class TicketsSummary extends Component {
     // }
 
 
-    render(props) {
+    render() {
         return (
 
             <div className="ticket-summary">
@@ -60,24 +67,15 @@ export default class TicketsSummary extends Component {
                     owner={this.state.owner}
                     handleModalClose={this.handleModalClose}
                     modalIsOpen={this.state.ticketModalIsOpen}
+                    handleSuccesfulFormSubmit={this.handleSuccesfulFormSubmit}
                  />
                  
-                 {this.state.showResolved === false ? 
-              <div onChange={this.handleResolvedUpdate}>
-                 {this.state.resolved === "False" ? 
-              <div className="ticket-summary-data" onClick={this.handleTicketClick}>
+                 <div className="ticket-summary-data" onClick={this.handleTicketClick}>
                 <div className="grid-item"><a >{this.props.title}</a></div>
                 <div className="grid-item">{this.props.description}</div>
                 <div className="grid-item">{this.props.ticket_type}</div>
                 <div className="grid-item">{this.props.priority}</div>
-              </div> : null }
-              </div>
-            : <div className="ticket-summary-data" onClick={this.handleTicketClick}>
-                <div className="grid-item"><a >{this.props.title}</a></div>
-                <div className="grid-item">{this.props.description}</div>
-                <div className="grid-item">{this.props.ticket_type}</div>
-                <div className="grid-item">{this.props.priority}</div>
-            </div>  }
+            </div>
             
           </div>
             

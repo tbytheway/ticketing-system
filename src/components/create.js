@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { navigate } from 'hookrouter'
 import '../style/main.scss'
 
 
@@ -83,7 +82,7 @@ export default class Create extends Component {
         }) .then(function (response) {
             console.log(response)
         })
-        .then(navigate("/thanks"))
+        .then(this.props.history.push("/thanks"))
         .catch(err => console.error("Handle Subit Error: ", err))
             .catch(function (error) {
                 console.log(error)

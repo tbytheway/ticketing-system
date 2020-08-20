@@ -35,6 +35,10 @@ export default class TicketModal extends Component {
         }
     }
 
+    handleSuccesfulFormSubmit = (obj) => {
+        this.props.handleSuccesfulFormSubmit(obj)
+    }
+
 render() {
     return(
         <ReactModal 
@@ -54,6 +58,7 @@ render() {
                 notes={this.state.notes}
                 priority={this.state.priority}
                 owner={this.state.owner}
+                handleSuccesfulFormSubmit={this.handleSuccesfulFormSubmit}
             />
             
         </ReactModal>
