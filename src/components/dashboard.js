@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import TicketsSummary from './tickets-summary'
+import { trackPromise } from 'react-promise-tracker'
 
 import '../style/main.scss'
 
@@ -71,7 +72,7 @@ handleSuccesfulFormSubmit = updatedObj => {
           )
         })
       }
-
+    trackPromise(
       getTickets = () => {
         axios.get("https://tdb-ticket-api.herokuapp.com/tickets")
       .then(res => {
@@ -81,13 +82,13 @@ handleSuccesfulFormSubmit = updatedObj => {
       })
       .catch(function (error) {
           console.log(error);
-        });
-      }
+        })
+      })
 
-      componentDidMount() {
+    componentDidMount() {
         this.getTickets()
-      };
-
+    }
+  
 
 render() {
     return(

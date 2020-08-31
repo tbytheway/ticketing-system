@@ -44,12 +44,7 @@ export default class TicketsSummary extends Component {
       })
       this.props.handleSuccesfulFormSubmit(updatedTicket)
     }
-    // componentDidMount() {
-    //   if (this.props.showResolved === true)
-    //   this.setState({
-    //     showResolved: true
-    //   })
-    // }
+
 
 
     render() {
