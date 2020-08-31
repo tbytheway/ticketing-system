@@ -11,7 +11,8 @@ export default class Dashboard extends Component {
         this.state = {
           tickets: [],
           showResolved: false,
-          showHide: "Show Archived"
+          showHide: "Show Archived",
+          loading: true
         } 
         this.handleTicketClick =this.handleTicketClick.bind(this)
         this.handleShowResolved = this.handleShowResolved.bind(this)
@@ -72,18 +73,21 @@ handleSuccesfulFormSubmit = updatedObj => {
           )
         })
       }
-    trackPromise(
+    
       getTickets = () => {
         axios.get("https://tdb-ticket-api.herokuapp.com/tickets")
       .then(res => {
         this.setState({
           tickets: res.data
         })
+        this.setState({
+          loading: true
+        })
       })
       .catch(function (error) {
           console.log(error);
         })
-      })
+      }
 
     componentDidMount() {
         this.getTickets()
@@ -102,7 +106,8 @@ render() {
                   <div>Ticket Type</div>
                   <div>Priority</div>
                 </div>
-                {this.ticketSummary()}
+                {this.loading ? <h1>Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}
+                
                 <button className="show-archived" onClick={this.handleShowResolved}>{this.state.showHide ? "Show Archived" : "Hide Archived"}</button>
             </div>
         </div>
