@@ -77,11 +77,10 @@ handleSuccesfulFormSubmit = updatedObj => {
       getTickets = () => {
         axios.get("https://tdb-ticket-api.herokuapp.com/tickets")
       .then(res => {
+        
         this.setState({
+          loading: false,
           tickets: res.data
-        })
-        this.setState({
-          loading: true
         })
       })
       .catch(function (error) {
