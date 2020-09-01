@@ -105,7 +105,7 @@ render() {
                   <div>Ticket Type</div>
                   <div>Priority</div>
                 </div>
-                {this.loading ? <h1>Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}
+                {this.state.loading ? <h1>Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}
                 
                 <button className="show-archived" onClick={this.handleShowResolved}>{this.state.showHide ? "Show Archived" : "Hide Archived"}</button>
             </div>

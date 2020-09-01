@@ -34,6 +34,23 @@
     cursor: pointer;
 }
 
+.close {
+    background-color: rgb(212, 22, 22);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 30px;
+    cursor: pointer;
+    position: relative;
+    top: -250px;
+    left: 250px;
+}
+
 .delete {
     background-color: rgb(212, 22, 22);
     border: none;
@@ -47,6 +64,10 @@
     width: 82px;
     cursor: pointer;
     position: relative;
-    top: 130px;
+    top: 100px;
     left: 250px;
+}
+
+.submit-close {
+    display: flex;
 }

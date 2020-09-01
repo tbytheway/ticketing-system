@@ -73,6 +73,7 @@ export default class Update extends Component {
             notes: this.props.notes,
             priority: this.props.priority,
             owner: this.props.owner
+
           });
         
       }
@@ -107,8 +108,10 @@ render() {
                     Owner
                     <div><input type="text" placeholder="Owner" value={this.state.owner} name="owner" onChange={this.handleChange}/></div>
                 </div>
-                   
+                
                 <button className="submit" onClick={this.submitChange} >Submit</button>
+                <button className="close" onClick={() => {this.props.handleModalClose()}}>X</button>
+                
                 <button className="delete" onClick={this.submitDelete} >Delete</button>
             </form>
            
