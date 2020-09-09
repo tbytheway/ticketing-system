@@ -68,6 +68,10 @@ export default class Create extends Component {
         
     }
 
+    cancelItem_onClick = () => {
+        window.history.back();
+      }
+
     submitChange = (e) => {
         
         axios.post("https://tdb-ticket-api.herokuapp.com/ticket", {
@@ -129,7 +133,7 @@ render() {
                 
             </form>
            <button className="create-submit" onClick={this.submitChange} >Submit</button>
-            
+           <button className="cancel" onClick={this.cancelItem_onClick} >Cancel</button>
         </div>
     )
 

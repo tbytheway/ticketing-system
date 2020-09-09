@@ -10,13 +10,14 @@
 }
 
 .ticket-summary-data {
-    display: flex;
+    display: grid;
     cursor: pointer;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
     
 }
 
-.rows :nth-of-type(odd) {
-    background: lightsteelblue;
+.ticket-summary-data:hover {
+    font-weight: bold;
   }
 

@@ -66,10 +66,10 @@ export default class TicketsSummary extends Component {
                  />
                  
                  <div className="ticket-summary-data" onClick={this.handleTicketClick}>
-                <div className="grid-item"><a >{this.props.title}</a></div>
-                <div className="grid-item">{this.props.description}</div>
-                <div className="grid-item">{this.props.ticket_type}</div>
-                <div className="grid-item">{this.props.priority}</div>
+                <div className="grid-item"><a>{this.props.title}</a></div>
+                <div className="grid-item"><a>{this.props.description}</a></div>
+                <div className="grid-item"><a>{this.props.ticket_type}</a></div>
+                <div className="grid-item"><a>{this.props.priority}</a></div>
             </div>
             
           </div>
