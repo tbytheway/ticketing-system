@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Thanks() {
+const Thanks = () => {
     return(
         <div>
             <h1>Thanks for your submission</h1>
@@ -8,3 +8,4 @@ export default function Thanks() {
     )
 
 }
+export default Thanks
