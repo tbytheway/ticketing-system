@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import TicketsSummary from './tickets-summary'
+import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
 import { trackPromise } from 'react-promise-tracker'
 
 import '../style/main.scss'
@@ -16,9 +17,24 @@ export default class Dashboard extends Component {
         } 
         this.handleTicketClick =this.handleTicketClick.bind(this)
         this.handleShowResolved = this.handleShowResolved.bind(this)
+        // this.handleClickActive = this.handleClickActive.bind(this);
+    
+
     }
+    
+handleClickActive = (e) => {
+      e.preventDefault()
+      this.setState({
+        showResolved: false
+      })
+}
 
-
+handleClickArchived = (e) => {
+  e.preventDefault()
+  this.setState({
+    showResolved: true
+  })
+}
 
 handleTicketClick() {
   this.setState({
@@ -29,6 +45,19 @@ handleTicketClick() {
 handleShowResolved() {
   this.setState({
     showResolved: !this.state.showResolved,
+    showHide: !this.state.showHide
+  })
+}
+
+handleShowResolvedActive() {
+  this.setState({
+    showResolved: false,
+    showHide: !this.state.showHide
+  })
+}
+handleShowResolvedArchived() {
+  this.setState({
+    showResolved: true,
     showHide: !this.state.showHide
   })
 }
@@ -96,8 +125,11 @@ handleSuccesfulFormSubmit = updatedObj => {
 render() {
     return(
         <div>
-          <div className="header"></div>
-            <h1>Active Tickets</h1>
+          <div className="header">
+            <div><a href="#" onClick={this.handleClickActive}>Active</a>|<a href="#" onClick={this.handleClickArchived}>Archived</a></div>
+            <div className="add-ticket"><Link to="/create">Add Ticket</Link></div>
+          </div>
+            
             <div className="bodyWrapper">
                 <div className="columns">
                   <div>Title</div>
@@ -105,9 +137,8 @@ render() {
                   <div>Ticket Type</div>
                   <div>Priority</div>
                 </div>
-                {this.state.loading ? <h1>Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}
-                
-                <button className="show-archived" onClick={this.handleShowResolved}>{this.state.showHide ? "Show Archived" : "Hide Archived"}</button>
+                {this.state.loading ? <h1>Loading...Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}
+                         
             </div>
         </div>
         

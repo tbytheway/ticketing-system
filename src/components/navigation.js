@@ -13,7 +13,7 @@ export default function Navigation() {
       <div className="nav-bar-links">
         <div>Terry's Tickets</div>
         <div><Link to="/">Dashboard</Link></div>
-        <div><Link to="/create">New Ticket</Link></div>
+        <div><Link to="/create">Support</Link></div>
       </div>
     
           

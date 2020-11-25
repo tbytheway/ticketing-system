@@ -1,17 +1,56 @@
 .bodyWrapper {
-    border: 1px solid;
-    background-color: rgb(247, 246, 244);
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px grey;
-    padding: 20px;
+    // border: 1px solid;
+    // background-color: rgb(247, 246, 244);
+    // border-radius: 10px;
+    // box-shadow: 10px 10px 5px grey;
+    // padding: 20px;
 }
 
 .columns {
     display: flex;
     justify-content: space-evenly;
+    background-color: rgb(212, 22, 22);
+    color: white;
+    padding: 5px 15px;
+    text-align: left;
+    font-size: 20px;
+    margin: 4px 2px;
 }
 
 .show-archived {
+    background-color: rgb(212, 22, 22);
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-ticket {
+    background-color: rgb(212, 22, 22);
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.add-ticket:visited {
     background-color: rgb(212, 22, 22);
     border: none;
     color: white;
