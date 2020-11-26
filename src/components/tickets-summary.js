@@ -50,7 +50,7 @@ export default class TicketsSummary extends Component {
     render() {
         return (
 
-            <div className="ticket-summary">
+          <div className="ticket-summary">
                 <TicketModal
                     id={this.state.id}
                     title={this.state.title}
@@ -65,11 +65,11 @@ export default class TicketsSummary extends Component {
                     handleSuccesfulFormSubmit={this.handleSuccesfulFormSubmit}
                  />
                  
-                 <div className="ticket-summary-data" onClick={this.handleTicketClick}>
-                <div className="grid-item"><a>{this.props.title}</a></div>
-                <div className="grid-item"><a>{this.props.description}</a></div>
-                <div className="grid-item"><a>{this.props.ticket_type}</a></div>
-                <div className="grid-item"><a>{this.props.priority}</a></div>
+            <div className="ticket-summary-data" onClick={this.handleTicketClick}>
+                <div className="grid-item-title"><a>{this.props.title}</a></div>
+                <div className="grid-item-description"><a>{this.props.description}</a></div>
+                <div className="grid-item-type"><a>{this.props.ticket_type}</a></div>
+                <div className="grid-item-priority"><a>{this.props.priority}</a></div>
             </div>
             
           </div>
