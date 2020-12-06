@@ -124,7 +124,7 @@ render() {
     return(
         <div>
           <div className="header">
-            <div><a href="#" onClick={this.handleClickActive}>Active</a>&nbsp;|&nbsp;<a href="#" onClick={this.handleClickArchived}>Archived</a></div>
+            <div className="archive-links"><a href="#" onClick={this.handleClickActive}>Active</a>&nbsp;|&nbsp;<a href="#" onClick={this.handleClickArchived}>Archived</a></div>
             <div className="add-ticket"><Link to="/create">Add Ticket</Link></div>
           </div>
             
@@ -132,7 +132,7 @@ render() {
                 <div className="columns">
                   <div className="ticket-title">Title</div>
                   <div className="ticket-description">Description</div>
-                  <div>Ticket Type</div>
+                  <div>Type</div>
                   <div>Priority</div>
                 </div>
                 {this.state.loading ? <h1>Loading...Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}
