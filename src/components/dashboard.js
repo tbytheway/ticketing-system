@@ -13,19 +13,17 @@ export default class Dashboard extends Component {
           tickets: [],
           showResolved: false,
           showHide: "Show Archived",
-          loading: true
+          loading: true,
+          bold: false
         } 
         this.handleTicketClick =this.handleTicketClick.bind(this)
         this.handleShowResolved = this.handleShowResolved.bind(this)
-        // this.handleClickActive = this.handleClickActive.bind(this);
-    
-
-    }
+}
     
 handleClickActive = (e) => {
       e.preventDefault()
       this.setState({
-        showResolved: false
+        showResolved: false,
       })
 }
 
@@ -126,15 +124,15 @@ render() {
     return(
         <div>
           <div className="header">
-            <div><a href="#" onClick={this.handleClickActive}>Active</a>|<a href="#" onClick={this.handleClickArchived}>Archived</a></div>
+            <div className="archive-links"><a href="#" onClick={this.handleClickActive}>Active</a>&nbsp;|&nbsp;<a href="#" onClick={this.handleClickArchived}>Archived</a></div>
             <div className="add-ticket"><Link to="/create">Add Ticket</Link></div>
           </div>
             
             <div className="bodyWrapper">
                 <div className="columns">
-                  <div>Title</div>
-                  <div>Description</div>
-                  <div>Ticket Type</div>
+                  <div className="ticket-title">Title</div>
+                  <div className="ticket-description">Description</div>
+                  <div>Type</div>
                   <div>Priority</div>
                 </div>
                 {this.state.loading ? <h1>Loading...Patience Danielson</h1> : <div>{this.ticketSummary()}</div>}

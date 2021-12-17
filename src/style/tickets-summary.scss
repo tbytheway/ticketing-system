@@ -1,10 +1,27 @@
 .ticket-summary {
     display: flex;
-    
-
 }
 
-.grid-item {
+.grid-item-title {
+    display: flex;
+    border-bottom: 1px solid #dfdfdf;
+    width: 200px;
+    color: blue;
+    justify-content: left;
+}
+
+.grid-item-description {
+    border-bottom: 1px solid #dfdfdf;
+    width: 200px;
+    flex-grow: .5;
+}
+
+.grid-item-type {
+    border-bottom: 1px solid #dfdfdf;
+    width: 200px;
+}
+
+.grid-item-priority {
     border-bottom: 1px solid #dfdfdf;
     width: 200px;
 }
@@ -19,3 +36,6 @@
     color: rgb(212, 22, 22);
   }
 
+.title {
+    color: blue;
+}
