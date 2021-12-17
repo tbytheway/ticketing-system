@@ -45,6 +45,8 @@ export default class TicketsSummary extends Component {
       this.props.handleSuccesfulFormSubmit(updatedTicket)
     }
 
+    
+
 
 
     render() {
