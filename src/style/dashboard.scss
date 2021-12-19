@@ -68,11 +68,12 @@ a:visited {
     flex-grow: .5;
 }
 
-.archive-links:visited {
+a.archive-links:visited {
     color: black;
     text-decoration: underline;
 }
 
-.archive-links {
+a.archive-links {
     color: black;
+    text-decoration: none;
 }
